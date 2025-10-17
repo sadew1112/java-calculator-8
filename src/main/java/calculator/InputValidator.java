@@ -8,7 +8,7 @@ public class InputValidator {
         }
 
         if(input.startsWith("//")){
-            if (!input.contains("\n") || input.endsWith("\n")) {
+            if (!input.contains("\\n") || input.endsWith("\\n")) {
                 throw new IllegalArgumentException("커스텀 구분자 형식에 맞지 않습니다.");
             }
         }else{
