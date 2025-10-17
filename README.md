@@ -1,11 +1,11 @@
 # 문자열 계산기
 
 ## 기본 조건
-입력받는 문자열은 구분자와 양수의 조합
-기본 구분자는 , 와 :
-빈 문자열 혹은 공백 문자열이 입력될 시 0을 반환
-커스텀 구분자는 문자열 앞부분의 // 와 \n 사이에 위치하는 문자
-잘못된 입력값이 들어올 시 IllegalArgumentException 에러를 던지고 프로그램 종료
+1. 입력받는 문자열은 구분자와 양수의 조합
+2. 기본 구분자는 , 와 :
+3. 빈 문자열 혹은 공백 문자열이 입력될 시 0을 반환
+4. 커스텀 구분자는 문자열 앞부분의 // 와 \n 사이에 위치하는 문자
+5. 잘못된 입력값이 들어올 시 IllegalArgumentException 에러를 던지고 프로그램 종료
 
 ## 필요 Class
 - Application(입출력 전용)
@@ -18,6 +18,14 @@
 - ValidatorTest(InputValidator 클래스 용 단위 테스트)
 - SeparatorTest(Separator 클래스 용 단위 테스트)
 - CalculatorTest(Calculator 클래스 용 단위 테스트)
+
+## 기능 구현 목록
+1. Application 입출력 코드
+2. StringCal에서 InputValidator, Separator, Calculator 을 호출하고 최종값을 반환하는 메서드
+3. InputValidator에서 입력받은 문자열을 검증하는 메서드
+4. Separator에서 문자열을 구분하고 분리된 숫자 리스트를 반환하는 메서드
+5. Calculator에서 최종적으로 숫자를 모두 더하는 메서드
+6. 각 단위 테스트 코드
 
 ## 동작 흐름도
 1. Application 실행 시 Console 을 통해 문자열을 입력 받는다.
