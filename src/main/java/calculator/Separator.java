@@ -14,7 +14,7 @@ public class Separator {
             int stdIndex = input.lastIndexOf("\\n");
 
             String custom = input.substring(2, stdIndex);
-            String numStr = input.substring(stdIndex + 1);
+            String numStr = input.substring(stdIndex + 2);
 
             sepList.add(custom);
 
