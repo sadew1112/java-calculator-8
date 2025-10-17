@@ -13,6 +13,9 @@ public class StringCal {
         this.calculator = calculator;
     }
     public int result(String input) {
+        if (input != null && input.isBlank()) {
+            return 0;
+        }
         validator.validate(input);
         List<Integer> numList = separator.parse(input);
         return calculator.sum(numList);
