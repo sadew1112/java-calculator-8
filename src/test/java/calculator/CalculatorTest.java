@@ -2,6 +2,7 @@ package calculator;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -21,8 +22,9 @@ public class CalculatorTest {
     }
 
     @Test
-    void null_값이_포함되면_예외발생() {
-        assertThatThrownBy(() -> calculator.sum(List.of(1, null, 3)))
+    void null값_포함시_예외() {
+        // List.of 는 불변 리스트 생성 + null 포함 불가 이므로 형식 변환
+        assertThatThrownBy(() -> calculator.sum(Arrays.asList(1, null, 3)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
