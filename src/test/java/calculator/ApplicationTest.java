@@ -25,6 +25,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 빈문자열_입력시() {
+        assertSimpleTest(() -> {
+            run("  ");  // 빈 문자열
+            assertThat(output()).contains("결과 : 0");
+        });
+    }
+
+    @Test
     void 커스텀구분자_예외_테스트() { // //로 시작하지만 뒤에 \n이 없는 경우
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("//;1;2;3"))

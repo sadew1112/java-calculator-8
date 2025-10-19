@@ -14,7 +14,6 @@
 - Separator(입력 값에서 숫자와 커스텀 구분자를 분리)
 - Calculator(최종적으로 숫자를 더하는 계산)
 - ApplicationTest(통합 테스트)
-- StringCalTest(StringCal 클래스 용 단위 테스트)
 - ValidatorTest(InputValidator 클래스 용 단위 테스트)
 - SeparatorTest(Separator 클래스 용 단위 테스트)
 - CalculatorTest(Calculator 클래스 용 단위 테스트)
