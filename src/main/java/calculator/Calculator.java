@@ -7,8 +7,12 @@ public class Calculator {
         int result = 0;
 
         for(Integer num : numList){
-            if(num == null || num < 0){
-                throw new IllegalArgumentException("숫자가 null 이거나 음수입니다.");
+            if(num == null){
+                throw new IllegalArgumentException("숫자가 아닌 null 값이 포함되어 있습니다.");
+            }
+
+            if(num < 0){
+                throw new IllegalArgumentException("음수 값이 포함되어 있습니다.");
             }
 
             result += num;
