@@ -11,7 +11,7 @@ public class Separator {
         List<String> sepList = new ArrayList<>(List.of(",", ":"));
 
         if(input.startsWith("//")){
-            int stdIndex = input.lastIndexOf("\\n");
+            int stdIndex = input.indexOf("\\n");
 
             String custom = input.substring(2, stdIndex);
             String numStr = input.substring(stdIndex + 2);
@@ -25,6 +25,10 @@ public class Separator {
     }
 
     private List<Integer> translate(List<String> sepList, String numStr) {
+        if (numStr.isBlank()){
+            return List.of(0);
+        }
+
         for (String sep : sepList) {
             numStr = numStr.replace(sep, ",");
         }
