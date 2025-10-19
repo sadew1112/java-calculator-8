@@ -24,6 +24,64 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 커스텀구분자_예외_테스트() { // //로 시작하지만 뒤에 \n이 없는 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("//;1;2;3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 문자_포함_예외_테스트() { // //로 시작하지 않음에도 문자가 포함된 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1,a,2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 구분자_포함_예외_테스트() { // //로 시작하지 않음에도 문자가 포함된 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1,?2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 빈문자열_입력시() {
+        assertSimpleTest(() -> {
+            run("  ");   // 빈 문자열
+            assertThat(output()).contains("결과 : 0");
+        });
+    }
+
+    @Test
+    void 기본_구분자() {
+        assertSimpleTest(() -> {
+            run("1,3:5,7");
+            assertThat(output()).contains("결과 : 16");
+        });
+    }
+
+    @Test
+    void 커스텀_구분자_예시2() {
+        assertSimpleTest(() -> {
+            run("//;\\n2;3;4");
+            assertThat(output()).contains("결과 : 9");
+        });
+    }
+
+    @Test
+    void 커스텀_구분자_예시3() {
+        assertSimpleTest(() -> {
+            run("//!!\\n2!!3!!4,5");
+            assertThat(output()).contains("결과 : 14");
+        });
+    }
+
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
