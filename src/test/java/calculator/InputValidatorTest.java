@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
 public class InputValidatorTest {
@@ -22,7 +23,6 @@ public class InputValidatorTest {
                 .isThrownBy(() -> validator.validate("//;\\n1;3"));
     }
 
-
     @Test
     void null_예외_테스트() {
         assertThatThrownBy(() -> validator.validate(null))
@@ -38,6 +38,22 @@ public class InputValidatorTest {
     void 커스텀구분자_예외_테스트() {
         assertThatThrownBy(() -> validator.validate("//\\n\\n\\n1,2,3"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 문자_포함_예외_테스트() { // //로 시작하지 않음에도 문자가 포함된 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.validate("1,a,2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 구분자_포함_예외_테스트() { // //로 시작하지 않음에도 문자가 포함된 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.validate("1,?2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
 
